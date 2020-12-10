@@ -3,27 +3,69 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9223E0172578586A00429ED2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9223E0162578586A00429ED2 /* Game.swift */; };
+		9223E01B257858FE00429ED2 /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9223E01A257858FE00429ED2 /* Games.swift */; };
+		9223E01E25785AAC00429ED2 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9223E01D25785AAC00429ED2 /* GameTableViewCell.swift */; };
+		9223E0212578720D00429ED2 /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9223E0202578720D00429ED2 /* GameDetailViewController.swift */; };
+		9223E024257873DE00429ED2 /* GameDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9223E023257873DE00429ED2 /* GameDetail.swift */; };
+		9223E0472578959300429ED2 /* GameDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9223E0462578959300429ED2 /* GameDataTableViewCell.swift */; };
+		9223E0692578B6B300429ED2 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9223E0682578B6B300429ED2 /* Team.swift */; };
+		9223E08C2578B98500429ED2 /* Teams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9223E08B2578B98500429ED2 /* Teams.swift */; };
+		9223E0B425799EA800429ED2 /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9223E0B325799EA800429ED2 /* TeamListViewController.swift */; };
+		9223E0B72579A23100429ED2 /* TeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9223E0B62579A23000429ED2 /* TeamTableViewCell.swift */; };
+		9223E0BA2579D54B00429ED2 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9223E0B92579D54A00429ED2 /* ChatViewController.swift */; };
+		9223E0BD2579D82E00429ED2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9223E0BC2579D82D00429ED2 /* Message.swift */; };
+		9223E0C02579E29F00429ED2 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9223E0BF2579E29F00429ED2 /* Messages.swift */; };
+		923DDA2E2581E96900D8312C /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923DDA2D2581E96900D8312C /* UIViewController+alert.swift */; };
+		923DDA312581F8B400D8312C /* ChatImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923DDA302581F8B400D8312C /* ChatImageTableViewCell.swift */; };
+		923DDA342582016100D8312C /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923DDA332582016100D8312C /* ImageViewController.swift */; };
 		928AF8C02578419C00CD496F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928AF8BF2578419C00CD496F /* AppDelegate.swift */; };
 		928AF8C22578419C00CD496F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928AF8C12578419C00CD496F /* SceneDelegate.swift */; };
-		928AF8C42578419C00CD496F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928AF8C32578419C00CD496F /* ViewController.swift */; };
+		928AF8C42578419C00CD496F /* GamesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928AF8C32578419C00CD496F /* GamesListViewController.swift */; };
 		928AF8C72578419D00CD496F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 928AF8C52578419D00CD496F /* Main.storyboard */; };
 		928AF8C9257841A100CD496F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 928AF8C8257841A100CD496F /* Assets.xcassets */; };
 		928AF8CC257841A100CD496F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 928AF8CA257841A100CD496F /* LaunchScreen.storyboard */; };
+		92E52AFE2579FDB500611434 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92E52AFD2579FDB500611434 /* GoogleService-Info.plist */; };
+		92E52B02257A039700611434 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E52B01257A039700611434 /* ChatTableViewCell.swift */; };
+		92E52B05257ACD3800611434 /* HTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E52B04257ACD3800611434 /* HTUser.swift */; };
+		B46C0199075E9E7A042E95D7 /* Pods_HotTakes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3352F1FFE6D93CCB2E1A5BB3 /* Pods_HotTakes.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3352F1FFE6D93CCB2E1A5BB3 /* Pods_HotTakes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HotTakes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57E3AB6C75B076B33053F022 /* Pods-HotTakes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotTakes.release.xcconfig"; path = "Target Support Files/Pods-HotTakes/Pods-HotTakes.release.xcconfig"; sourceTree = "<group>"; };
+		9223E0162578586A00429ED2 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		9223E01A257858FE00429ED2 /* Games.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
+		9223E01D25785AAC00429ED2 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
+		9223E0202578720D00429ED2 /* GameDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
+		9223E023257873DE00429ED2 /* GameDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetail.swift; sourceTree = "<group>"; };
+		9223E0462578959300429ED2 /* GameDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDataTableViewCell.swift; sourceTree = "<group>"; };
+		9223E0682578B6B300429ED2 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		9223E08B2578B98500429ED2 /* Teams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teams.swift; sourceTree = "<group>"; };
+		9223E0B325799EA800429ED2 /* TeamListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
+		9223E0B62579A23000429ED2 /* TeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
+		9223E0B92579D54A00429ED2 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		9223E0BC2579D82D00429ED2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		9223E0BF2579E29F00429ED2 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		923DDA2D2581E96900D8312C /* UIViewController+alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
+		923DDA302581F8B400D8312C /* ChatImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatImageTableViewCell.swift; sourceTree = "<group>"; };
+		923DDA332582016100D8312C /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		928AF8BC2578419C00CD496F /* HotTakes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotTakes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		928AF8BF2578419C00CD496F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		928AF8C12578419C00CD496F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		928AF8C32578419C00CD496F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		928AF8C32578419C00CD496F /* GamesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListViewController.swift; sourceTree = "<group>"; };
 		928AF8C62578419D00CD496F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		928AF8C8257841A100CD496F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		928AF8CB257841A100CD496F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		928AF8CD257841A100CD496F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92E52AFD2579FDB500611434 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		92E52B01257A039700611434 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		92E52B04257ACD3800611434 /* HTUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTUser.swift; sourceTree = "<group>"; };
+		B19A78DE27770E0200FEAC90 /* Pods-HotTakes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotTakes.debug.xcconfig"; path = "Target Support Files/Pods-HotTakes/Pods-HotTakes.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +73,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B46C0199075E9E7A042E95D7 /* Pods_HotTakes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30087A6D46C4627D0C32508E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B19A78DE27770E0200FEAC90 /* Pods-HotTakes.debug.xcconfig */,
+				57E3AB6C75B076B33053F022 /* Pods-HotTakes.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7D945583580D97E107FAFCF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3352F1FFE6D93CCB2E1A5BB3 /* Pods_HotTakes.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		928AF8B32578419C00CD496F = {
 			isa = PBXGroup;
 			children = (
 				928AF8BE2578419C00CD496F /* HotTakes */,
 				928AF8BD2578419C00CD496F /* Products */,
+				30087A6D46C4627D0C32508E /* Pods */,
+				7D945583580D97E107FAFCF8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,11 +120,30 @@
 			children = (
 				928AF8BF2578419C00CD496F /* AppDelegate.swift */,
 				928AF8C12578419C00CD496F /* SceneDelegate.swift */,
-				928AF8C32578419C00CD496F /* ViewController.swift */,
+				923DDA2D2581E96900D8312C /* UIViewController+alert.swift */,
+				9223E0BC2579D82D00429ED2 /* Message.swift */,
+				9223E0BF2579E29F00429ED2 /* Messages.swift */,
+				92E52B04257ACD3800611434 /* HTUser.swift */,
+				9223E0682578B6B300429ED2 /* Team.swift */,
+				9223E08B2578B98500429ED2 /* Teams.swift */,
+				9223E0162578586A00429ED2 /* Game.swift */,
+				9223E01A257858FE00429ED2 /* Games.swift */,
+				9223E023257873DE00429ED2 /* GameDetail.swift */,
+				9223E01D25785AAC00429ED2 /* GameTableViewCell.swift */,
+				9223E0B62579A23000429ED2 /* TeamTableViewCell.swift */,
+				9223E0462578959300429ED2 /* GameDataTableViewCell.swift */,
+				92E52B01257A039700611434 /* ChatTableViewCell.swift */,
+				923DDA302581F8B400D8312C /* ChatImageTableViewCell.swift */,
+				928AF8C32578419C00CD496F /* GamesListViewController.swift */,
+				9223E0202578720D00429ED2 /* GameDetailViewController.swift */,
+				9223E0B325799EA800429ED2 /* TeamListViewController.swift */,
+				9223E0B92579D54A00429ED2 /* ChatViewController.swift */,
+				923DDA332582016100D8312C /* ImageViewController.swift */,
 				928AF8C52578419D00CD496F /* Main.storyboard */,
 				928AF8C8257841A100CD496F /* Assets.xcassets */,
 				928AF8CA257841A100CD496F /* LaunchScreen.storyboard */,
 				928AF8CD257841A100CD496F /* Info.plist */,
+				92E52AFD2579FDB500611434 /* GoogleService-Info.plist */,
 			);
 			path = HotTakes;
 			sourceTree = "<group>";
@@ -74,9 +155,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 928AF8D0257841A100CD496F /* Build configuration list for PBXNativeTarget "HotTakes" */;
 			buildPhases = (
+				14A0965D55992E5CC214F19C /* [CP] Check Pods Manifest.lock */,
 				928AF8B82578419C00CD496F /* Sources */,
 				928AF8B92578419C00CD496F /* Frameworks */,
 				928AF8BA2578419C00CD496F /* Resources */,
+				A5619E90DF161DB56F315F0B /* [CP] Embed Pods Frameworks */,
+				480584024338FC7A7B6E938A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				928AF8CC257841A100CD496F /* LaunchScreen.storyboard in Resources */,
+				92E52AFE2579FDB500611434 /* GoogleService-Info.plist in Resources */,
 				928AF8C9257841A100CD496F /* Assets.xcassets in Resources */,
 				928AF8C72578419D00CD496F /* Main.storyboard in Resources */,
 			);
@@ -132,14 +217,91 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		14A0965D55992E5CC214F19C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HotTakes-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		480584024338FC7A7B6E938A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HotTakes/Pods-HotTakes-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HotTakes/Pods-HotTakes-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HotTakes/Pods-HotTakes-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5619E90DF161DB56F315F0B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HotTakes/Pods-HotTakes-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HotTakes/Pods-HotTakes-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HotTakes/Pods-HotTakes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		928AF8B82578419C00CD496F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				928AF8C42578419C00CD496F /* ViewController.swift in Sources */,
+				923DDA2E2581E96900D8312C /* UIViewController+alert.swift in Sources */,
+				9223E024257873DE00429ED2 /* GameDetail.swift in Sources */,
+				9223E0C02579E29F00429ED2 /* Messages.swift in Sources */,
+				9223E0212578720D00429ED2 /* GameDetailViewController.swift in Sources */,
+				928AF8C42578419C00CD496F /* GamesListViewController.swift in Sources */,
+				923DDA312581F8B400D8312C /* ChatImageTableViewCell.swift in Sources */,
+				92E52B05257ACD3800611434 /* HTUser.swift in Sources */,
+				9223E0172578586A00429ED2 /* Game.swift in Sources */,
 				928AF8C02578419C00CD496F /* AppDelegate.swift in Sources */,
+				9223E0B425799EA800429ED2 /* TeamListViewController.swift in Sources */,
+				923DDA342582016100D8312C /* ImageViewController.swift in Sources */,
+				9223E08C2578B98500429ED2 /* Teams.swift in Sources */,
+				9223E0472578959300429ED2 /* GameDataTableViewCell.swift in Sources */,
+				9223E0B72579A23100429ED2 /* TeamTableViewCell.swift in Sources */,
+				9223E01B257858FE00429ED2 /* Games.swift in Sources */,
+				9223E0BA2579D54B00429ED2 /* ChatViewController.swift in Sources */,
+				92E52B02257A039700611434 /* ChatTableViewCell.swift in Sources */,
 				928AF8C22578419C00CD496F /* SceneDelegate.swift in Sources */,
+				9223E0BD2579D82E00429ED2 /* Message.swift in Sources */,
+				9223E0692578B6B300429ED2 /* Team.swift in Sources */,
+				9223E01E25785AAC00429ED2 /* GameTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,12 +445,14 @@
 		};
 		928AF8D1257841A100CD496F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B19A78DE27770E0200FEAC90 /* Pods-HotTakes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6A39RK6S5G;
 				INFOPLIST_FILE = HotTakes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,12 +466,14 @@
 		};
 		928AF8D2257841A100CD496F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57E3AB6C75B076B33053F022 /* Pods-HotTakes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6A39RK6S5G;
 				INFOPLIST_FILE = HotTakes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
