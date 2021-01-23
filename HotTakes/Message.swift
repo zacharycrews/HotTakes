@@ -52,7 +52,7 @@ class Message {
     func saveData(completion: @escaping (Bool) -> ()) {
         let db = Firestore.firestore()
         // Grab the user ID
-        guard let postingUserID = Auth.auth().currentUser?.uid else {
+        guard let postingUserID = Auth.auth().currentUser?.email else {
             print("ERROR: Could not save data because we don't have a valid postingUserID.")
             return completion(false)
         }

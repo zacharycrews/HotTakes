@@ -26,9 +26,9 @@ class Games {
             }
             
             do {
-                self.gameArray = try JSONDecoder().decode([Game].self, from: data!)
+                self.gameArray = try JSONDecoder().decode([Game].self, from: data ?? Data())
             } catch {
-                print("JSON ERROR: \(error.localizedDescription)")
+                print("GAMES JSON ERROR: \(error.localizedDescription)")
             }
             completed()
         }

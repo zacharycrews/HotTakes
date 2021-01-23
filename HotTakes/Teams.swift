@@ -24,7 +24,7 @@ class Teams {
             }
             
             do {
-                self.teamArray = try JSONDecoder().decode([Team].self, from: data!)
+                self.teamArray = try JSONDecoder().decode([Team].self, from: data ?? Data())
             } catch {
                 print("JSON ERROR: \(error)")
             }

@@ -17,3 +17,9 @@ struct Team: Codable {
     var logos: [String]
     
 }
+
+extension Team {
+    init() {
+        self.init(id: 0, school: "", mascot: "", abbreviation: "", color: "", alt_color: "", logos: [])
+    }
+}

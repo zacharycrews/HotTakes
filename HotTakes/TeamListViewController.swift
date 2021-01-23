@@ -20,6 +20,7 @@ class TeamListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        // Loads teams
         teams.getData {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -28,13 +29,14 @@ class TeamListViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if selectedTeam == nil {
-            self.navigationItem.setHidesBackButton(true, animated: true)
-        } else {
-            self.navigationItem.setHidesBackButton(false , animated: true)
-        }
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        // Hides back button if user has not previously selected a team
+//        if selectedTeam == nil {
+//            self.navigationItem.setHidesBackButton(true, animated: true)
+//        } else {
+//            self.navigationItem.setHidesBackButton(false , animated: true)
+//        }
+//    }
     
 }
 
@@ -45,6 +47,8 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamCell", for: indexPath) as! TeamTableViewCell
+        
+        // Update team name label and logo
         cell.teamNameLabel.text = "\(teams.teamArray[indexPath.row].school) \(teams.teamArray[indexPath.row].mascot)"
         guard let url = URL(string: "https://a.espncdn.com/i/teamlogos/ncaa/500/\(teams.teamArray[indexPath.row].id).png") else {return cell}
         do {
@@ -53,7 +57,7 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
         } catch {
             print("ERROR: error thrown trying to get image from url \(url)")
         }
-        //cell.teamImageView.sd_setImage(with: url, completed: nil)
+
         return cell
     }
     

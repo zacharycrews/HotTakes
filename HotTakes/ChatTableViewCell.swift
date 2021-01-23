@@ -13,5 +13,5 @@ class ChatTableViewCell: UITableViewCell {
     @IBOutlet weak var sentByLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var messageImageView: UIImageView!
-    
+    @IBOutlet weak var profileImageView: UIImageView!
 }

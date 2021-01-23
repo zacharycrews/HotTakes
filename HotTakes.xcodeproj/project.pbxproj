@@ -23,6 +23,8 @@
 		923DDA2E2581E96900D8312C /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923DDA2D2581E96900D8312C /* UIViewController+alert.swift */; };
 		923DDA312581F8B400D8312C /* ChatImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923DDA302581F8B400D8312C /* ChatImageTableViewCell.swift */; };
 		923DDA342582016100D8312C /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923DDA332582016100D8312C /* ImageViewController.swift */; };
+		92862CEF259815D000230AF2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92862CEE259815D000230AF2 /* ProfileViewController.swift */; };
+		92862CF325A0E7A200230AF2 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92862CF225A0E7A200230AF2 /* EditProfileViewController.swift */; };
 		928AF8C02578419C00CD496F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928AF8BF2578419C00CD496F /* AppDelegate.swift */; };
 		928AF8C22578419C00CD496F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928AF8C12578419C00CD496F /* SceneDelegate.swift */; };
 		928AF8C42578419C00CD496F /* GamesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928AF8C32578419C00CD496F /* GamesListViewController.swift */; };
@@ -54,6 +56,8 @@
 		923DDA2D2581E96900D8312C /* UIViewController+alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		923DDA302581F8B400D8312C /* ChatImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatImageTableViewCell.swift; sourceTree = "<group>"; };
 		923DDA332582016100D8312C /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		92862CEE259815D000230AF2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		92862CF225A0E7A200230AF2 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		928AF8BC2578419C00CD496F /* HotTakes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotTakes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		928AF8BF2578419C00CD496F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		928AF8C12578419C00CD496F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 				9223E0B325799EA800429ED2 /* TeamListViewController.swift */,
 				9223E0B92579D54A00429ED2 /* ChatViewController.swift */,
 				923DDA332582016100D8312C /* ImageViewController.swift */,
+				92862CEE259815D000230AF2 /* ProfileViewController.swift */,
+				92862CF225A0E7A200230AF2 /* EditProfileViewController.swift */,
 				928AF8C52578419D00CD496F /* Main.storyboard */,
 				928AF8C8257841A100CD496F /* Assets.xcassets */,
 				928AF8CA257841A100CD496F /* LaunchScreen.storyboard */,
@@ -287,9 +293,11 @@
 				9223E0212578720D00429ED2 /* GameDetailViewController.swift in Sources */,
 				928AF8C42578419C00CD496F /* GamesListViewController.swift in Sources */,
 				923DDA312581F8B400D8312C /* ChatImageTableViewCell.swift in Sources */,
+				92862CEF259815D000230AF2 /* ProfileViewController.swift in Sources */,
 				92E52B05257ACD3800611434 /* HTUser.swift in Sources */,
 				9223E0172578586A00429ED2 /* Game.swift in Sources */,
 				928AF8C02578419C00CD496F /* AppDelegate.swift in Sources */,
+				92862CF325A0E7A200230AF2 /* EditProfileViewController.swift in Sources */,
 				9223E0B425799EA800429ED2 /* TeamListViewController.swift in Sources */,
 				923DDA342582016100D8312C /* ImageViewController.swift in Sources */,
 				9223E08C2578B98500429ED2 /* Teams.swift in Sources */,
