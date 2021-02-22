@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-class Message {
+class Message: Equatable {
     var body: String
     var sentOn: Date
     var messageDisplayName: String
@@ -17,6 +17,8 @@ class Message {
     var imageURL: String
     var postingUserID: String
     var documentID: String
+    
+    var sendingUser: HTUser!
     
     var dictionary: [String: Any] {
         let timeIntervalDate = sentOn.timeIntervalSince1970
@@ -166,5 +168,9 @@ class Message {
                 return completion(true)
             }
         }
+    }
+    
+    static func ==(lhs: Message, rhs: Message) -> Bool {
+        return lhs.sentOn == rhs.sentOn && lhs.postingUserID == rhs.postingUserID
     }
 }

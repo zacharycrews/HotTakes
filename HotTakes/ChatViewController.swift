@@ -17,8 +17,15 @@ private let dateFormatter: DateFormatter = {
 class ChatViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     var messages: Messages!
+    var followingPosts: Messages!
+    var teamPosts: Messages!
+    
+    var viewingFollowing: Bool = true
+    var currentlyLoading: Bool = false
+    
     var favoriteTeam: Team!
     var imagePickerController = UIImagePickerController()
     var imageMessage: Message!
@@ -32,6 +39,8 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         
         messages = Messages()
+        teamPosts = Messages()
+        followingPosts = Messages()
         
         // Hide keyboard if we tap outside of field
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
@@ -42,20 +51,14 @@ class ChatViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+        
         imagePickerController.delegate = self
         
-        messages.loadData {
-            DispatchQueue.main.async {
-                self.tableView.isHidden = self.messages.messageArray.count == 0
-                self.messages.messageArray.sort {
-                    $0.sentOn > $1.sentOn
-                }
-                self.tableView.reloadData()
-                if self.messages.messageArray.count > 0 {
-                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
-                }
-            }
-        }
+        loadTeamPosts()
+        loadFollowingPosts()
         
         originalKeyboardY = messageTextField.frame.origin.y
         
@@ -65,14 +68,9 @@ class ChatViewController: UIViewController {
         if self.favoriteTeam == nil {
             self.favoriteTeam = Team(id: 0, school: "", mascot: "", abbreviation: "", color: "", alt_color: "", logos: [])
         }
+        
         self.navigationController?.navigationBar.barTintColor = UIColor(hex: "\(favoriteTeam.color)ff")
         self.navigationController?.navigationBar.tintColor = UIColor(hex: "\(favoriteTeam.alt_color ?? "")ff")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if messages.messageArray.count != 0 {
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -81,7 +79,9 @@ class ChatViewController: UIViewController {
             let destination = segue.destination as! ProfileViewController
             destination.userEmail = messages.messageArray[tableView.indexPathForSelectedRow?.row ?? 0].postingUserID
             destination.htUser = htUser
+            destination.originalUser = htUser
         }
+        
 //        if segue.identifier == "ShowPhoto" {
 //            let destination = segue.destination as! ImageViewController
 //            let selectedIndexPath = tableView.indexPathForSelectedRow!
@@ -89,27 +89,81 @@ class ChatViewController: UIViewController {
 //        }
     }
     
+    // Reloads following or team posts, depending on which the user is refreshing
+    @objc func handleRefreshControl() {
+        viewingFollowing ? loadFollowingPosts() : loadTeamPosts()
+
+    }
+    
+    // Loads posts by users with the same favorite team, sorts by date posted
+    func loadTeamPosts() {
+        teamPosts.loadPostsForFavoriteTeam(id: favoriteTeam.id) {
+            DispatchQueue.main.async {
+                self.teamPosts.messageArray.sort {
+                    $0.sentOn > $1.sentOn
+                }
+                
+                if self.messages.messageArray.count > 0 {
+                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                    self.tableView.refreshControl?.endRefreshing()
+                }
+            }
+        }
+    }
+    
+    // Loads posts by followed users, sorts by date posted
+    func loadFollowingPosts() {
+        followingPosts.loadPostsForFollowing(user: htUser) {
+            DispatchQueue.main.async {
+                self.followingPosts.messageArray.sort {
+                    $0.sentOn > $1.sentOn
+                }
+                
+                // If this is the first time following posts are being loaded, store them in messages
+                if self.messages.messageArray.count == 0 && self.viewingFollowing {
+                    self.messages.messageArray = self.followingPosts.messageArray
+                    self.tableView.isHidden = self.messages.messageArray.count == 0
+                    self.tableView.reloadData()
+                }
+                
+                if self.messages.messageArray.count > 0 {
+                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                    self.tableView.refreshControl?.endRefreshing()
+                }
+            }
+        }
+    }
+    
     @IBAction func sendKeyPressed(_ sender: UITextField) {
         messageTextField.resignFirstResponder()
         messageTextField.frame.origin.y = originalKeyboardY
-        let message = Message(body: messageTextField.text!, sentOn: Date(), messageDisplayName: htUser.displayName ?? "", favoriteTeamID: favoriteTeam.id, image: UIImage(), imageURL: "", postingUserID: htUser.email, documentID: "")
+        let documentID = UUID().uuidString
+        let message = Message(body: messageTextField.text!, sentOn: Date(), messageDisplayName: htUser.displayName ?? "", favoriteTeamID: favoriteTeam.id, image: UIImage(), imageURL: "", postingUserID: htUser.email, documentID: "\(favoriteTeam.id)-\(documentID)")
         messageTextField.text = ""
         message.saveData { (success) in
             if success {
                 print("Message sent successfully!")
+                self.htUser.addPost(postID: "\(self.favoriteTeam.id)-\(documentID)")
                 DispatchQueue.main.async {
 //                    if !self.messages.messageArray.contains(where: message -> true) {
 //                        self.messages.messageArray.append(message)
 //                    }
                     self.tableView.isHidden = false
                     self.tableView.reloadData()
-                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+                    //self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
                 }
             }  else {
-                print("*** ERROR: couldn't leave this view controller because data wasn't saved.")
+                print("*** ERROR: message wasn't saved.")
             }
         }
     }
+    
     @IBAction func checkTextLength(_ sender: UITextField) {
         if sender.text?.count ?? 0 > 100 {
             sender.text? = String(sender.text?.prefix(100) ?? "")
@@ -132,6 +186,14 @@ class ChatViewController: UIViewController {
         alertController.addAction(cancelAction)
 
         present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
+        messages.messageArray = (viewingFollowing) ? teamPosts.messageArray : followingPosts.messageArray
+        viewingFollowing.toggle()
+        print("Viewing following list: \(viewingFollowing)")
+        tableView.isHidden = messages.messageArray.count == 0
+        tableView.reloadData()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -243,6 +305,8 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return messages.messageArray[indexPath.row].imageURL == "" ? 100 : 150
+        return 100
     }
+    
+    
 }

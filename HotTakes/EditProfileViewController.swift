@@ -136,7 +136,7 @@ class EditProfileViewController: UIViewController {
         let teamSelected = selectedTeam != nil
         let usernameIsValid = usernameTextField.text?.count ?? 0 >= 3
         doneBarButton.isEnabled = teamSelected && usernameIsValid
-        cancelBarButton.isEnabled = doneBarButton.isEnabled && htUser.favoriteTeamID != 0
+        cancelBarButton.isEnabled = htUser.favoriteTeamID != 0
         usernameWarningLabel.text = usernameIsValid ? "" : "Username must be at least 3 characters long"
         teamWarningLabel.text = teamSelected ? "" : "Must select favorite team"
     }

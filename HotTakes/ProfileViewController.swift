@@ -15,10 +15,14 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var favoriteTeamImageView: UIImageView!
     @IBOutlet weak var fanForLabel: UILabel!
-    @IBOutlet weak var editProfileButton: UIButton!
+    @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var teamNameLabel: UILabel!
+    @IBOutlet weak var followersButton: UIButton!
+    @IBOutlet weak var followingButton: UIButton!
     
     var favoriteTeam: Team!
     var htUser: HTUser!
+    var originalUser: HTUser!
     var photoData: Data!
     var userEmail: String!
     
@@ -48,7 +52,6 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         if userEmail == nil {
             if htUser == nil {
                 currentlySigningIn = true
@@ -60,8 +63,9 @@ class ProfileViewController: UIViewController {
                 updateUserInterface()
             }
         } else {
-            editProfileButton.isHidden = true
-            if userEmail != htUser.email {
+            if userEmail! != originalUser.email {
+                followButton.isEnabled = true
+                followButton.setTitle(originalUser.isFollowing(user: userEmail) ? "Unfollow" : "Follow", for: .normal)
                 htUser.getUserForEmail(email: userEmail!) { (user) in
                     self.htUser = user
                     user.loadImage(completion: { (_) in
@@ -81,6 +85,9 @@ class ProfileViewController: UIViewController {
         if htUser == nil {return}
         //editProfileButton?.isHidden = (htUser.email != Auth.auth().currentUser?.email)
         nameLabel.text = htUser.displayName
+        teamNameLabel?.text = htUser.teamName
+        followersButton?.setTitle("\(htUser.followersCount)", for: .normal)
+        followingButton?.setTitle("\(htUser.followingCount)", for: .normal)
         updateFanLabel()
         print("Day: \(Date().timeIntervalSince1970 - htUser.userSince.timeIntervalSince1970)")
         
@@ -106,7 +113,8 @@ class ProfileViewController: UIViewController {
         var str = "Fan for "
         let difference = Date().timeIntervalSince1970 - htUser.userSince.timeIntervalSince1970
         if difference < 3600 {
-            str += "less than an hour"
+            fanForLabel.text = "New Fan"
+            return
         } else if difference < 86400 {
             let hours = Int(difference/3600)
             str += "\(hours) \(hours == 1 ? "hour" : "hours")"
@@ -122,8 +130,12 @@ class ProfileViewController: UIViewController {
     
     func updateOtherTabs() {
                 
-        let chatTab = self.tabBarController?.viewControllers?[1].children[0] as! ChatViewController
-        let scoresTab = self.tabBarController?.viewControllers?[0].children[0] as! GamesListViewController
+        guard let chatTab = self.tabBarController?.viewControllers?[1].children[0] as? ChatViewController else {
+            return
+        }
+        guard let scoresTab = self.tabBarController?.viewControllers?[0].children[0] as? GamesListViewController else {
+            return
+        }
         chatTab.favoriteTeam = favoriteTeam
         chatTab.htUser = htUser
         scoresTab.favoriteTeam = favoriteTeam
@@ -144,7 +156,16 @@ class ProfileViewController: UIViewController {
             if favoriteTeam.id != 0 {
                 destination.favoriteTeam = favoriteTeam
             }
-            print("PPE Segue prepared")
+        } else if segue.identifier == "ShowFollowers" {
+            let destination = segue.destination as! UserListViewController
+            destination.userList = htUser.followers
+            destination.htUser = htUser
+            destination.originalUser = originalUser
+        } else if segue.identifier == "ShowFollowing" {
+            let destination = segue.destination as! UserListViewController
+            destination.userList = htUser.following
+            destination.htUser = htUser
+            destination.originalUser = originalUser
         }
     }
     
@@ -199,6 +220,7 @@ class ProfileViewController: UIViewController {
                 DispatchQueue.main.async {
                     print("Created user")
                     self.currentlySigningIn = false
+                    self.originalUser = self.htUser
                     self.getUserInfo()
                     self.updateUserInterface()
                     self.updateOtherTabs()
@@ -223,6 +245,19 @@ class ProfileViewController: UIViewController {
         } catch {
             print("ERROR: couldn't sign out")
         }
+    }
+    
+    @IBAction func followButtonPressed(_ sender: UIButton) {
+        if originalUser.isFollowing(user: userEmail) { // unfollow them
+            originalUser.unfollow(user: userEmail)
+            htUser.removeFollower(user: originalUser.email)
+            followButton.setTitle("Follow", for: .normal)
+        } else { // follow
+            originalUser.follow(user: userEmail)
+            htUser.addFollower(user: originalUser.email)
+            followButton.setTitle("Unfollow", for: .normal)
+        }
+        updateUserInterface()
     }
 }
 

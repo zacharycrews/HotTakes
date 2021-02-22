@@ -16,6 +16,11 @@ class HTUser {
     var teamName: String
     var teamColorA: String
     var teamColorB: String
+    var followers: [String]
+    var following: [String]
+    var followersCount: Int
+    var followingCount: Int
+    var posts: [String]
     var userSince: Date
     var documentID: String
     
@@ -23,10 +28,10 @@ class HTUser {
     
     var dictionary: [String: Any] {
         let timeIntervalDate = userSince.timeIntervalSince1970
-        return ["email": email, "displayName": displayName, "photoURL": photoURL, "favoriteTeamID": favoriteTeamID, "teamName": teamName, "teamColorA" : teamColorA, "teamColorB": teamColorB, "userSince": timeIntervalDate]
+        return ["email": email, "displayName": displayName, "photoURL": photoURL, "favoriteTeamID": favoriteTeamID, "teamName": teamName, "teamColorA" : teamColorA, "teamColorB": teamColorB, "followers" : followers, "following" : following, "followersCount" : followersCount, "followingCount" : followingCount, "posts" : posts, "userSince": timeIntervalDate]
     }
     
-    init(email: String, displayName: String, photoURL: String, favoriteTeamID: Int, teamName: String, teamColorA: String, teamColorB: String, userSince: Date, documentID: String) {
+    init(email: String, displayName: String, photoURL: String, favoriteTeamID: Int, teamName: String, teamColorA: String, teamColorB: String, followers: [String], following: [String], followersCount: Int, followingCount: Int, posts: [String], userSince: Date, documentID: String) {
         self.email = email
         self.displayName = displayName
         self.photoURL = photoURL
@@ -34,14 +39,23 @@ class HTUser {
         self.teamName = teamName
         self.teamColorA = teamColorA
         self.teamColorB = teamColorB
+        self.followers = followers
+        self.following = following
+        self.followersCount = followersCount
+        self.followingCount = followingCount
+        self.posts = posts
         self.userSince = userSince
         self.documentID = documentID
+    }
+    
+    convenience init() {
+        self.init(email: "", displayName: "", photoURL: "", favoriteTeamID: 0, teamName: "", teamColorA: "", teamColorB: "", followers: [], following: [], followersCount: 0, followingCount: 0, posts: [], userSince: Date(), documentID: "")
     }
     
     convenience init(user: User, completed: @escaping (Bool) -> ()) {
         let email = user.email ?? ""
         let photoURL = ""
-        self.init(email: email, displayName: "", photoURL: photoURL, favoriteTeamID: 0, teamName: "", teamColorA: "", teamColorB: "", userSince: Date(), documentID: user.uid)
+        self.init(email: email, displayName: "", photoURL: photoURL, favoriteTeamID: 0, teamName: "", teamColorA: "", teamColorB: "", followers: [], following: [], followersCount: 0, followingCount: 0, posts: [], userSince: Date(), documentID: user.uid)
         let db = Firestore.firestore()
         db.collection("users").document(email).getDocument(completion: { (document, error) in
             if (document?.exists ?? false) {
@@ -63,9 +77,98 @@ class HTUser {
         let teamName = dictionary["teamName"] as! String? ?? ""
         let teamColorA = dictionary["teamColorA"] as! String? ?? ""
         let teamColorB = dictionary["teamColorB"] as! String? ?? ""
+        let followers = dictionary["followers"] as! [String]? ?? []
+        let following = dictionary["following"] as! [String]? ?? []
+        let followersCount = dictionary["followersCount"] as! Int? ?? 0
+        let followingCount = dictionary["followingCount"] as! Int? ?? 0
+        let posts = dictionary["posts"] as! [String]? ?? []
         let timeIntervalDate = dictionary["userSince"] as! TimeInterval? ?? TimeInterval()
         let userSince = Date(timeIntervalSince1970: timeIntervalDate)
-        self.init(email: email, displayName: displayName, photoURL: photoURL, favoriteTeamID : favoriteTeamID, teamName: teamName, teamColorA: teamColorA, teamColorB: teamColorB, userSince: userSince, documentID: "")
+        self.init(email: email, displayName: displayName, photoURL: photoURL, favoriteTeamID : favoriteTeamID, teamName: teamName, teamColorA: teamColorA, teamColorB: teamColorB, followers: followers, following: following, followersCount: followersCount, followingCount: followingCount, posts: posts, userSince: userSince, documentID: "")
+    }
+    
+    func isFollowing(user: String) -> Bool {
+        return self.following.contains(user)
+    }
+    
+    func addFollower(user: String) {
+        self.followers.append(user)
+        followersCount += 1
+        let db = Firestore.firestore()
+        let userRef = db.collection("users").document(email)
+        userRef.getDocument { (document, error) in
+            guard error == nil else {
+                print("ERROR: couldn't access document for user \(self.documentID)")
+                return
+            }
+            
+            db.collection("users").document(self.email).updateData(["followers" : self.followers, "followersCount" : self.followersCount]) { (error) in
+                return
+            }
+        }
+    }
+    
+    func removeFollower(user: String) {
+        self.followers.remove(at: self.followers.firstIndex(of: user)!)
+        self.followersCount -= 1
+        let db = Firestore.firestore()
+        let userRef = db.collection("users").document(email)
+        userRef.getDocument { (document, error) in
+            guard error == nil else {
+                print("ERROR: couldn't access document for user \(self.documentID)")
+                return
+            }
+            db.collection("users").document(self.email).updateData(["followers" : self.followers, "followersCount" : self.followersCount]) { (error) in
+                return
+            }
+        }
+    }
+    
+    func follow(user: String) {
+        self.following.append(user)
+        self.followingCount += 1
+        let db = Firestore.firestore()
+        let userRef = db.collection("users").document(email)
+        userRef.getDocument { (document, error) in
+            guard error == nil else {
+                print("ERROR: couldn't access document for user \(self.documentID)")
+                return
+            }
+            db.collection("users").document(self.email).updateData(["following" : self.following, "followingCount" : self.followingCount]) { (error) in
+                return
+            }
+        }
+    }
+    
+    func unfollow(user: String) {
+        self.following.remove(at: self.following.firstIndex(of: user)!)
+        self.followingCount -= 1
+        let db = Firestore.firestore()
+        let userRef = db.collection("users").document(email)
+        userRef.getDocument { (document, error) in
+            guard error == nil else {
+                print("ERROR: couldn't access document for user \(self.documentID)")
+                return
+            }
+            db.collection("users").document(self.email).updateData(["following" : self.following, "followingCount" : self.followingCount]) { (error) in
+                return
+            }
+        }
+    }
+    
+    func addPost(postID: String) {
+        self.posts.append(postID)
+        let db = Firestore.firestore()
+        let userRef = db.collection("users").document(email)
+        userRef.getDocument { (document, error) in
+            guard error == nil else {
+                print("ERROR: couldn't access document for user \(self.documentID)")
+                return
+            }
+            db.collection("users").document(self.email).updateData(["posts" : self.posts]) { (error) in
+                return
+            }
+        }
     }
     
     func saveUser(_ wantToOverwrite: Bool, completion: @escaping (Bool)->()) {
@@ -77,10 +180,10 @@ class HTUser {
                 print("ERROR: couldn't access document for user \(self.documentID)")
                 return completion(false)
             }
-//            guard document?.exists == false else {
-//                print("Document for user \(self.documentID) already exists")
-//                return completion(true)
-//            }
+            //            guard document?.exists == false else {
+            //                print("Document for user \(self.documentID) already exists")
+            //                return completion(true)
+            //            }
             if !wantToOverwrite && self.favoriteTeamID != 0 {
                 return completion(true)
             }
@@ -170,6 +273,11 @@ class HTUser {
             self.teamName = data["teamName"] as! String
             self.teamColorA = data["teamColorA"] as! String
             self.teamColorB = data["teamColorB"] as! String
+            self.followers = data["followers"] as? [String] ?? []
+            self.following = data["following"] as? [String] ?? []
+            self.followersCount = data["followersCount"] as? Int ?? 0
+            self.followingCount = data["followingCount"] as? Int ?? 0
+            self.posts = data["posts"] as? [String] ?? []
             self.userSince = Date(timeIntervalSince1970: data["userSince"] as! TimeInterval)
             self.displayName = data["displayName"] as! String
             self.photoURL = data["photoURL"] as! String
@@ -200,14 +308,14 @@ class HTUser {
     
     func getUserForEmail(email: String, completion: @escaping (HTUser) -> ()) {
         let db = Firestore.firestore()
-        var userToReturn = HTUser(email: email, displayName: "Unknown User", photoURL: "", favoriteTeamID: 0, teamName: "", teamColorA: "", teamColorB: "", userSince: Date(), documentID: "")
+        var userToReturn = HTUser(email: email, displayName: "Unknown User", photoURL: "", favoriteTeamID: 0, teamName: "", teamColorA: "", teamColorB: "", followers: [], following: [], followersCount: 0, followingCount: 0, posts: [], userSince: Date(), documentID: "")
         db.collection("users").document(email).getDocument(completion: { (document, error) in
             guard let data = document?.data() else {
                 print("Document data was empty.")
                 completion(userToReturn)
                 return
             }
-            userToReturn = HTUser(email: email, displayName: data["displayName"] as! String, photoURL: data["photoURL"] as! String, favoriteTeamID: data["favoriteTeamID"] as! Int, teamName: data["teamName"] as! String, teamColorA: data["teamColorA"] as! String, teamColorB: data["teamColorB"] as! String, userSince: Date(timeIntervalSince1970: data["userSince"] as! TimeInterval), documentID: "")
+            userToReturn = HTUser(email: email, displayName: data["displayName"] as! String, photoURL: data["photoURL"] as! String, favoriteTeamID: data["favoriteTeamID"] as! Int, teamName: data["teamName"] as! String, teamColorA: data["teamColorA"] as! String, teamColorB: data["teamColorB"] as! String, followers: data["followers"] as! [String]? ?? [], following: data["following"] as! [String]? ?? [], followersCount: data["followersCount"] as! Int? ?? 0, followingCount: data["followingCount"] as! Int? ?? 0, posts: data["posts"] as! [String]? ?? [], userSince: Date(timeIntervalSince1970: data["userSince"] as! TimeInterval), documentID: "")
             completion(userToReturn)
         })
     }

@@ -31,6 +31,8 @@
 		928AF8C72578419D00CD496F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 928AF8C52578419D00CD496F /* Main.storyboard */; };
 		928AF8C9257841A100CD496F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 928AF8C8257841A100CD496F /* Assets.xcassets */; };
 		928AF8CC257841A100CD496F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 928AF8CA257841A100CD496F /* LaunchScreen.storyboard */; };
+		92B4D05025BCAE9800C9EB83 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B4D04F25BCAE9800C9EB83 /* UserTableViewCell.swift */; };
+		92B4D05325BCAFA400C9EB83 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B4D05225BCAFA400C9EB83 /* UserListViewController.swift */; };
 		92E52AFE2579FDB500611434 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92E52AFD2579FDB500611434 /* GoogleService-Info.plist */; };
 		92E52B02257A039700611434 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E52B01257A039700611434 /* ChatTableViewCell.swift */; };
 		92E52B05257ACD3800611434 /* HTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E52B04257ACD3800611434 /* HTUser.swift */; };
@@ -66,6 +68,8 @@
 		928AF8C8257841A100CD496F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		928AF8CB257841A100CD496F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		928AF8CD257841A100CD496F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92B4D04F25BCAE9800C9EB83 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		92B4D05225BCAFA400C9EB83 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		92E52AFD2579FDB500611434 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		92E52B01257A039700611434 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		92E52B04257ACD3800611434 /* HTUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTUser.swift; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 				9223E0462578959300429ED2 /* GameDataTableViewCell.swift */,
 				92E52B01257A039700611434 /* ChatTableViewCell.swift */,
 				923DDA302581F8B400D8312C /* ChatImageTableViewCell.swift */,
+				92B4D04F25BCAE9800C9EB83 /* UserTableViewCell.swift */,
 				928AF8C32578419C00CD496F /* GamesListViewController.swift */,
 				9223E0202578720D00429ED2 /* GameDetailViewController.swift */,
 				9223E0B325799EA800429ED2 /* TeamListViewController.swift */,
@@ -145,6 +150,7 @@
 				923DDA332582016100D8312C /* ImageViewController.swift */,
 				92862CEE259815D000230AF2 /* ProfileViewController.swift */,
 				92862CF225A0E7A200230AF2 /* EditProfileViewController.swift */,
+				92B4D05225BCAFA400C9EB83 /* UserListViewController.swift */,
 				928AF8C52578419D00CD496F /* Main.storyboard */,
 				928AF8C8257841A100CD496F /* Assets.xcassets */,
 				928AF8CA257841A100CD496F /* LaunchScreen.storyboard */,
@@ -291,6 +297,8 @@
 				9223E024257873DE00429ED2 /* GameDetail.swift in Sources */,
 				9223E0C02579E29F00429ED2 /* Messages.swift in Sources */,
 				9223E0212578720D00429ED2 /* GameDetailViewController.swift in Sources */,
+				92B4D05025BCAE9800C9EB83 /* UserTableViewCell.swift in Sources */,
+				92B4D05325BCAFA400C9EB83 /* UserListViewController.swift in Sources */,
 				928AF8C42578419C00CD496F /* GamesListViewController.swift in Sources */,
 				923DDA312581F8B400D8312C /* ChatImageTableViewCell.swift in Sources */,
 				92862CEF259815D000230AF2 /* ProfileViewController.swift in Sources */,
