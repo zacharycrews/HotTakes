@@ -8,5 +8,5 @@
 import Foundation
 
 struct APIKeys {
-    static let cfbKey = "gWLSAoWr4lNiNEn+hfvyL3n0wdQDIvdbPl4k88yJnqvjVZLblqhCn8SGkSOUANlN"
+    static let cfbKey = ""
 }
