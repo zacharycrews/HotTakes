@@ -23,8 +23,10 @@
 		923DDA2E2581E96900D8312C /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923DDA2D2581E96900D8312C /* UIViewController+alert.swift */; };
 		923DDA312581F8B400D8312C /* ChatImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923DDA302581F8B400D8312C /* ChatImageTableViewCell.swift */; };
 		923DDA342582016100D8312C /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923DDA332582016100D8312C /* ImageViewController.swift */; };
+		9267673526ACF6A70024D2E7 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9267673426ACF6A70024D2E7 /* APIKeys.swift */; };
 		92862CEF259815D000230AF2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92862CEE259815D000230AF2 /* ProfileViewController.swift */; };
 		92862CF325A0E7A200230AF2 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92862CF225A0E7A200230AF2 /* EditProfileViewController.swift */; };
+		9287F5CC2656DBA40090FE8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9287F5CB2656DBA30090FE8E /* GoogleService-Info.plist */; };
 		928AF8C02578419C00CD496F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928AF8BF2578419C00CD496F /* AppDelegate.swift */; };
 		928AF8C22578419C00CD496F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928AF8C12578419C00CD496F /* SceneDelegate.swift */; };
 		928AF8C42578419C00CD496F /* GamesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928AF8C32578419C00CD496F /* GamesListViewController.swift */; };
@@ -33,7 +35,6 @@
 		928AF8CC257841A100CD496F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 928AF8CA257841A100CD496F /* LaunchScreen.storyboard */; };
 		92B4D05025BCAE9800C9EB83 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B4D04F25BCAE9800C9EB83 /* UserTableViewCell.swift */; };
 		92B4D05325BCAFA400C9EB83 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B4D05225BCAFA400C9EB83 /* UserListViewController.swift */; };
-		92E52AFE2579FDB500611434 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92E52AFD2579FDB500611434 /* GoogleService-Info.plist */; };
 		92E52B02257A039700611434 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E52B01257A039700611434 /* ChatTableViewCell.swift */; };
 		92E52B05257ACD3800611434 /* HTUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E52B04257ACD3800611434 /* HTUser.swift */; };
 		B46C0199075E9E7A042E95D7 /* Pods_HotTakes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3352F1FFE6D93CCB2E1A5BB3 /* Pods_HotTakes.framework */; };
@@ -58,8 +59,10 @@
 		923DDA2D2581E96900D8312C /* UIViewController+alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		923DDA302581F8B400D8312C /* ChatImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatImageTableViewCell.swift; sourceTree = "<group>"; };
 		923DDA332582016100D8312C /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		9267673426ACF6A70024D2E7 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		92862CEE259815D000230AF2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		92862CF225A0E7A200230AF2 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		9287F5CB2656DBA30090FE8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		928AF8BC2578419C00CD496F /* HotTakes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotTakes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		928AF8BF2578419C00CD496F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		928AF8C12578419C00CD496F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +73,6 @@
 		928AF8CD257841A100CD496F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92B4D04F25BCAE9800C9EB83 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		92B4D05225BCAFA400C9EB83 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
-		92E52AFD2579FDB500611434 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		92E52B01257A039700611434 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		92E52B04257ACD3800611434 /* HTUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTUser.swift; sourceTree = "<group>"; };
 		B19A78DE27770E0200FEAC90 /* Pods-HotTakes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotTakes.debug.xcconfig"; path = "Target Support Files/Pods-HotTakes/Pods-HotTakes.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				928AF8BF2578419C00CD496F /* AppDelegate.swift */,
 				928AF8C12578419C00CD496F /* SceneDelegate.swift */,
+				9267673426ACF6A70024D2E7 /* APIKeys.swift */,
 				923DDA2D2581E96900D8312C /* UIViewController+alert.swift */,
 				9223E0BC2579D82D00429ED2 /* Message.swift */,
 				9223E0BF2579E29F00429ED2 /* Messages.swift */,
@@ -155,7 +158,7 @@
 				928AF8C8257841A100CD496F /* Assets.xcassets */,
 				928AF8CA257841A100CD496F /* LaunchScreen.storyboard */,
 				928AF8CD257841A100CD496F /* Info.plist */,
-				92E52AFD2579FDB500611434 /* GoogleService-Info.plist */,
+				9287F5CB2656DBA30090FE8E /* GoogleService-Info.plist */,
 			);
 			path = HotTakes;
 			sourceTree = "<group>";
@@ -221,7 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				928AF8CC257841A100CD496F /* LaunchScreen.storyboard in Resources */,
-				92E52AFE2579FDB500611434 /* GoogleService-Info.plist in Resources */,
+				9287F5CC2656DBA40090FE8E /* GoogleService-Info.plist in Resources */,
 				928AF8C9257841A100CD496F /* Assets.xcassets in Resources */,
 				928AF8C72578419D00CD496F /* Main.storyboard in Resources */,
 			);
@@ -295,6 +298,7 @@
 			files = (
 				923DDA2E2581E96900D8312C /* UIViewController+alert.swift in Sources */,
 				9223E024257873DE00429ED2 /* GameDetail.swift in Sources */,
+				9267673526ACF6A70024D2E7 /* APIKeys.swift in Sources */,
 				9223E0C02579E29F00429ED2 /* Messages.swift in Sources */,
 				9223E0212578720D00429ED2 /* GameDetailViewController.swift in Sources */,
 				92B4D05025BCAE9800C9EB83 /* UserTableViewCell.swift in Sources */,

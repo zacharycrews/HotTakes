@@ -258,6 +258,12 @@ class ProfileViewController: UIViewController {
             followButton.setTitle("Unfollow", for: .normal)
         }
         updateUserInterface()
+        
+        // Update user properties for chat tab
+        guard let chatTab = self.tabBarController?.viewControllers?[1].children[0] as? ChatViewController else {
+            return
+        }
+        chatTab.htUser = htUser
     }
 }
 

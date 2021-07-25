@@ -41,8 +41,11 @@ class GameDetail {
             return
         }
         
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(APIKeys.cfbKey)", forHTTPHeaderField:"Authorization")
+        
         let session = URLSession.shared
-        let task = session.dataTask(with: url) { (data, response, error) in
+        let task = session.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("ERROR: \(error.localizedDescription)")
             }

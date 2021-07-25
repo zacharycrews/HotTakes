@@ -43,6 +43,7 @@ class Messages {
             for document in querySnapshot!.documents {
                 //if !document.documentID.hasPrefix("\(id)-") {return}
                 let message = Message(dictionary: document.data())
+
                 print(document.documentID)
                 message.documentID = document.documentID
 //                message.loadImage { (_) in
@@ -55,7 +56,9 @@ class Messages {
     }
     
     func loadPostsForFollowing(user: HTUser, completed: @escaping () -> ()) {
-
+        if user.followingCount == 0 {
+            return completed()
+        }
         db.collection("messages").whereField("postingUserID", in: user.following).addSnapshotListener {
             (querySnapshot, error) in
             guard error == nil else {
@@ -64,10 +67,7 @@ class Messages {
             }
             self.messageArray = [] // clean out existing messageArray since new data will load
             // there are querySnapshot!.documents.count documents in the snapshot
-            print("LOADING FOLLOWING POSTS")
-            print("FOLLOWING: \(user.following)")
             for document in querySnapshot!.documents {
-                print("Found following post - \(document.documentID)")
                 //if !document.documentID.hasPrefix("\(id)-") {return}
                 let message = Message(dictionary: document.data())
                 message.documentID = document.documentID

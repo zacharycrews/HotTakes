@@ -23,7 +23,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.689767163126-tdfe586sg2cftbh7mc3cggethv3ajtjv</string>
+				<string>com.googleusercontent.apps.689767163126-o9jm1v69j8qqq8fmvog0qebiopn4bosu</string>
 			</array>
 		</dict>
 	</array>
@@ -33,6 +33,10 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict/>
+	<key>NSCameraUsageDescription</key>
+	<string>HotTakes needs access to the Camera to take pictures.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>HotTakes needs access to the Photo Library to send photos.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -75,9 +79,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>HotTakes needs access to the Camera to take pictures.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>HotTakes needs access to the Photo Library to send photos.</string>
 </dict>
 </plist>

@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>330114765845-sst4hputpa7js043tnukgnp1s5bvrvgq.apps.googleusercontent.com</string>
+	<string>689767163126-o9jm1v69j8qqq8fmvog0qebiopn4bosu.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.330114765845-sst4hputpa7js043tnukgnp1s5bvrvgq</string>
+	<string>com.googleusercontent.apps.689767163126-o9jm1v69j8qqq8fmvog0qebiopn4bosu</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAMT7ZjnyntxPetD3Qcqk9d-iTyEDzFsa8</string>
+	<string>AIzaSyAsrrOo5m24Yr1E-Ak26hViLOlp-eKz0vs</string>
 	<key>GCM_SENDER_ID</key>
-	<string>330114765845</string>
+	<string>689767163126</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>crews.HotTakes</string>
 	<key>PROJECT_ID</key>
-	<string>hottakes-d5706</string>
+	<string>hottakes-30443</string>
 	<key>STORAGE_BUCKET</key>
-	<string>hottakes-d5706.appspot.com</string>
+	<string>hottakes-30443.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:330114765845:ios:1d3c1ec5c995732eddaa1c</string>
+	<string>1:689767163126:ios:1a25096f6e9e28f17a38d7</string>
 </dict>
 </plist>

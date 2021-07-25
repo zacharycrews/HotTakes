@@ -27,6 +27,7 @@ class ChatViewController: UIViewController {
     var currentlyLoading: Bool = false
     
     var favoriteTeam: Team!
+    var teamImage: UIImage!
     var imagePickerController = UIImagePickerController()
     var imageMessage: Message!
     var htUser: HTUser!
@@ -67,6 +68,15 @@ class ChatViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if self.favoriteTeam == nil {
             self.favoriteTeam = Team(id: 0, school: "", mascot: "", abbreviation: "", color: "", alt_color: "", logos: [])
+        }
+        
+        // Get image for favorite team to avoid loading it every time for team-related posts
+        guard let url = URL(string: "https://a.espncdn.com/i/teamlogos/ncaa/500/\(favoriteTeam.id).png") else {return}
+        do {
+            let data = try Data(contentsOf: url)
+            teamImage = UIImage(data: data)
+        } catch {
+            print("ERROR: error thrown trying to get image from url \(url)")
         }
         
         self.navigationController?.navigationBar.barTintColor = UIColor(hex: "\(favoriteTeam.color)ff")
@@ -125,7 +135,7 @@ class ChatViewController: UIViewController {
                 // If this is the first time following posts are being loaded, store them in messages
                 if self.messages.messageArray.count == 0 && self.viewingFollowing {
                     self.messages.messageArray = self.followingPosts.messageArray
-                    self.tableView.isHidden = self.messages.messageArray.count == 0
+                    //self.tableView.isHidden = self.messages.messageArray.count == 0
                     self.tableView.reloadData()
                 }
                 
@@ -290,12 +300,16 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
             user.loadImage { (_) in
                 cell.profileImageView.image = user.image ?? UIImage()
             }
-            guard let url = URL(string: "https://a.espncdn.com/i/teamlogos/ncaa/500/\(user.favoriteTeamID).png") else {return}
-            do {
-                let data = try Data(contentsOf: url)
-                cell.messageImageView?.image = UIImage(data: data)
-            } catch {
-                print("ERROR: error thrown trying to get image from url \(url)")
+            if self.viewingFollowing {
+                guard let url = URL(string: "https://a.espncdn.com/i/teamlogos/ncaa/500/\(user.favoriteTeamID).png") else {return}
+                do {
+                    let data = try Data(contentsOf: url)
+                    cell.messageImageView?.image = UIImage(data: data)
+                } catch {
+                    print("ERROR: error thrown trying to get image from url \(url)")
+                }
+            } else {
+                cell.messageImageView?.image = self.teamImage
             }
         }
         cell.messageLabel.text = messages.messageArray[indexPath.row].body
