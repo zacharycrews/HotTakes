@@ -1,5 +1,5 @@
 # HotTakes
-College football-based social media app where users follow their favorite CFB program and interact with others inside and outside the team's community. 
+College football-based iOS app where users follow their favorite CFB program and interact with others inside and outside the team's community. 
 I began this app as part of an iOS programming course and have continued development since. My goal for this project is to create an all-in-one hub for CFB fanbases
 to follow their team and discuss games, recruiting, etc. with each other.
 Writing a full-stack app like this has boosted my interest and accelerated my learning in mobile software development.
