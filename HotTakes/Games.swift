@@ -12,7 +12,7 @@ class Games {
     
     func getData(teamName: String, completed: @escaping()->()) {
         let teamString = teamName.replacingOccurrences(of: " ", with: "%20")
-        let urlString = "https://api.collegefootballdata.com/games?year=2020&team=\(teamString)"
+        let urlString = "https://api.collegefootballdata.com/games?year=2021&team=\(teamString)"
         guard let url = URL(string: urlString) else {
             print("ERROR: Couldn't create a URL from \(urlString)")
             return

@@ -32,7 +32,7 @@ class GameDetail {
     
     init(id: Int) {
         gameID = id
-        urlString = "https://api.collegefootballdata.com/games/teams?year=2020&gameId=\(gameID!)"
+        urlString = "https://api.collegefootballdata.com/games/teams?year=2021&gameId=\(gameID!)"
     }
     
     func getData(completed: @escaping()->()) {

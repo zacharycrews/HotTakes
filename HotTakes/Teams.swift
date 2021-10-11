@@ -9,7 +9,7 @@ import Foundation
 
 class Teams {
     var teamArray: [Team] = []
-    var urlString = "https://api.collegefootballdata.com/teams/fbs?year=2020"
+    var urlString = "https://api.collegefootballdata.com/teams/fbs?year=2021"
     
     func getData(completed: @escaping()->()) {
         guard let url = URL(string: urlString) else {
